@@ -119,6 +119,7 @@ https://www.anaconda.com/products/distribution#download-section -> pack de utili
 		nmap -sP -n 192.168.1.* -> ver que maquinas estan levantadas dentro de a red
 		nmap -p- --open -sS --min-rate 5000 -vvv -n -Pn 192.168.1.33 -oG allPorts  --> escaneo exhautivo de la maquina a analizar exportar en el fichero allPorts (Formato grepeable)
 		nmap -p- --open -sS --min-rate 5000 -vvv -n -Pn 192.168.1.33 -o allPorts 
+		nmap -sCV -p 80,443 192.168.1.33 -oN targeted -> scaneo exhaustivo de puertos
 
 	###GOOGLE HACKING###
 		-Inurl: resultados específicos de la palabra que aparezca en la URL
